@@ -1,0 +1,37 @@
+Page Structure
+Your landing page should be clean, fast, and feature only one action: entering an email address.
+
+The Hero Section: The headline, subheadline, and email form placed "above the fold".
+
+The "Waitlist Value" (Urgency Trigger): A clear reason why they should sign up today rather than waiting for launch.
+
+The Core Benefits (3-Point Bullet List): A brief explanation of how your product beats the competition.
+
+The "Hero Image": A clean mockup of your dashboard or a simple visual of a QR code.
+
+Landing Page Copy
+1. Hero Section
+Headline: Never let a QR code break again.
+Sub-headline: Stop paying $35/month just to change a link. Create dynamic, trackable QR codes for a flat, one-time fee of $5. No hidden subscriptions. No expired codes.
+
+Form Field Placeholder: Enter your email address
+CTA Button: Get Early Access & 1 Free Code (Note: Action-oriented buttons convert much better than "Submit" )
+
+2. The Waitlist Value (Placed right below the email input)
+Text: 🎁 Join the waitlist today and get your first dynamic QR code completely free when we launch. Limited to the first 500 early adopters.
+
+3. The Core Benefits Section
+Headline: Designed for businesses, not billionaires.
+
+Pay Once, Use Forever: We replaced the SaaS subscription with a simple $5 fee per dynamic code. Print it once, update the link anytime, and never pay again.
+
+Track Every Scan: See exactly when, where, and what devices are scanning your codes with our built-in analytics dashboard.
+
+High-Res Export: Download professional-grade SVG and PNG files that stay crisp on business cards, menus, and billboards.
+
+4. Footer CTA
+Headline: Ready to break free from QR subscriptions?
+CTA Button: (Repeats the email input form and button from the hero section)
+
+Implementation Advice
+Because you are building this with Next.js, you can implement this page incredibly quickly. As noted in your past project plans (like PulseRelay ), keep the form friction to an absolute minimum: only ask for the email address. Do not ask for their name, company, or use cases yet.

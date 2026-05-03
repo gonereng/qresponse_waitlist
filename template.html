@@ -1,0 +1,655 @@
+<!doctype html>
+
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary-fixed": "#00174b",
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "on-secondary": "#ffffff",
+              "tertiary-fixed-dim": "#ffb596",
+              "primary-fixed": "#dbe1ff",
+              "on-tertiary-fixed-variant": "#7d2d00",
+              "primary-fixed-dim": "#b4c5ff",
+              "outline-variant": "#c3c6d7",
+              "surface-bright": "#faf8ff",
+              "surface-muted": "#F8FAFC",
+              tertiary: "#943700",
+              "tertiary-fixed": "#ffdbcd",
+              "primary-container": "#2563eb",
+              secondary: "#006c49",
+              "surface-container": "#ededf9",
+              "surface-container-high": "#e7e7f3",
+              "text-main": "#0F172A",
+              "on-surface": "#191b23",
+              "surface-tint": "#0053db",
+              "on-primary-container": "#eeefff",
+              "error-container": "#ffdad6",
+              "surface-container-lowest": "#ffffff",
+              "surface-variant": "#e1e2ed",
+              "secondary-container": "#6cf8bb",
+              "on-tertiary-container": "#ffede6",
+              "border-subtle": "#E2E8F0",
+              "secondary-fixed": "#6ffbbe",
+              "secondary-fixed-dim": "#4edea3",
+              surface: "#faf8ff",
+              "on-primary-fixed-variant": "#003ea8",
+              "on-secondary-fixed": "#002113",
+              background: "#faf8ff",
+              "surface-dim": "#d9d9e5",
+              "on-secondary-container": "#00714d",
+              "inverse-on-surface": "#f0f0fb",
+              outline: "#737686",
+              "on-tertiary-fixed": "#360f00",
+              "surface-container-highest": "#e1e2ed",
+              "on-surface-variant": "#434655",
+              "inverse-primary": "#b4c5ff",
+              "surface-background": "#FFFFFF",
+              "tertiary-container": "#bc4800",
+              error: "#ba1a1a",
+              "on-error": "#ffffff",
+              "accent-urgency": "#F59E0B",
+              "on-tertiary": "#ffffff",
+              "on-secondary-fixed-variant": "#005236",
+              "inverse-surface": "#2e3039",
+              primary: "#004ac6",
+              "on-background": "#191b23",
+              "text-muted": "#64748B",
+              "surface-container-low": "#f3f3fe",
+            },
+            borderRadius: {
+              DEFAULT: "0.25rem",
+              lg: "0.5rem",
+              xl: "0.75rem",
+              full: "9999px",
+            },
+            spacing: {
+              "container-max": "1120px",
+              gutter: "24px",
+              "stack-sm": "12px",
+              "stack-md": "24px",
+              "section-gap": "80px",
+              "stack-lg": "40px",
+            },
+            fontFamily: {
+              "headline-section": ["Manrope"],
+              "label-bold": ["Manrope"],
+              "waitlist-trigger": ["Manrope"],
+              "display-hero": ["Manrope"],
+              "body-main": ["Manrope"],
+              subheadline: ["Manrope"],
+            },
+            fontSize: {
+              "headline-section": [
+                "32px",
+                { lineHeight: "1.2", fontWeight: "700" },
+              ],
+              "label-bold": ["14px", { lineHeight: "1", fontWeight: "700" }],
+              "waitlist-trigger": [
+                "15px",
+                { lineHeight: "1.4", fontWeight: "500" },
+              ],
+              "display-hero": [
+                "48px",
+                {
+                  lineHeight: "1.1",
+                  letterSpacing: "-0.02em",
+                  fontWeight: "800",
+                },
+              ],
+              "body-main": ["16px", { lineHeight: "1.6", fontWeight: "400" }],
+              subheadline: ["20px", { lineHeight: "1.6", fontWeight: "400" }],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+    </style>
+  </head>
+  <body
+    class="bg-background text-text-main font-body-main antialiased selection:bg-primary-fixed selection:text-on-primary-fixed"
+  >
+    <!-- Top Navigation -->
+    <nav
+      class="fixed top-0 w-full z-50 bg-white/80 dark:bg-slate-950/80 backdrop-blur-md border-b border-slate-100 dark:border-slate-800 font-manrope"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 h-16 flex justify-between items-center"
+      >
+        <div
+          class="text-xl font-extrabold tracking-tight text-slate-900 dark:text-slate-50"
+        >
+          QResponse
+        </div>
+        <div class="flex items-center gap-8">
+          <button
+            class="bg-primary text-on-primary px-5 py-2.5 rounded-lg font-label-bold active:scale-95 duration-200 shadow-sm"
+          >
+            Join Waitlist
+          </button>
+        </div>
+      </div>
+    </nav>
+    <main class="pt-16">
+      <!-- Hero Section -->
+      <section
+        class="flex flex-col items-center justify-center pt-24 pb-section-gap px-6 text-center max-w-container-max mx-auto"
+      >
+        <div
+          class="inline-flex items-center px-4 py-1.5 mb-8 rounded-full bg-surface-container text-primary font-label-bold text-sm"
+        >
+          <span class="material-symbols-outlined text-[18px] mr-2"
+            >verified</span
+          >
+          The Subscription-Free QR Revolution
+        </div>
+        <h1
+          class="font-display-hero text-display-hero mb-stack-md text-slate-900"
+        >
+          Never let a QR code break again.
+        </h1>
+        <p
+          class="font-subheadline text-subheadline text-text-muted mb-stack-lg max-w-2xl mx-auto"
+        >
+          Stop paying $35/month just to change a link. Create dynamic, trackable
+          QR codes for a flat, one-time fee of $5. No hidden subscriptions. No
+          expired codes.
+        </p>
+        <div class="w-full mx-auto max-w-3xl">
+          <form class="flex flex-col md:flex-row gap-3 mb-4">
+            <input
+              class="flex-grow h-14 px-6 rounded-xl border-border-subtle bg-surface-background focus:ring-2 focus:ring-primary focus:border-primary transition-all font-body-main text-lg"
+              placeholder="Enter your email address"
+              required=""
+              type="email"
+            />
+            <button
+              class="h-14 px-8 bg-secondary text-on-secondary rounded-xl font-headline-section text-lg md:text-body-main flex items-center justify-center gap-2 hover:brightness-110 transition-all active:scale-95 shadow-lg shadow-secondary/20"
+              type="submit"
+            >
+              Get Early Access &amp; 1 Free Code
+              <span class="material-symbols-outlined">arrow_forward</span>
+            </button>
+          </form>
+          <div
+            class="bg-accent-urgency/10 border border-accent-urgency/20 rounded-lg p-4 flex items-center gap-3 text-left"
+          >
+            <span class="text-2xl">🎁</span>
+            <p
+              class="font-waitlist-trigger text-waitlist-trigger text-on-tertiary-fixed"
+            >
+              Join the waitlist today and get your first dynamic QR code
+              completely free when we launch. Limited to the first 500 early
+              adopters.
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- Feature Zig-Zag Section -->
+      <section class="py-section-gap overflow-hidden">
+        <div class="max-w-container-max mx-auto px-6 space-y-32">
+          <!-- Feature 1: Edit Links -->
+          <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24">
+            <div class="w-full md:w-1/2 relative">
+              <div
+                class="absolute -inset-4 bg-primary/5 rounded-[2.5rem] -rotate-2"
+              ></div>
+              <div
+                class="relative bg-white p-8 rounded-[2rem] border border-border-subtle shadow-xl"
+              >
+                <div
+                  class="bg-surface-container rounded-xl p-6 aspect-video flex flex-col gap-4 overflow-hidden"
+                >
+                  <div
+                    class="flex items-center justify-between border-b border-outline-variant pb-4"
+                  >
+                    <div class="flex items-center gap-2">
+                      <div
+                        class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center"
+                      >
+                        <span
+                          class="material-symbols-outlined text-white text-sm"
+                          >link</span
+                        >
+                      </div>
+                      <span class="font-label-bold text-sm"
+                        >Destination URL</span
+                      >
+                    </div>
+                    <span
+                      class="text-[10px] bg-secondary-container text-on-secondary-container px-2 py-0.5 rounded-full font-bold"
+                      >ACTIVE</span
+                    >
+                  </div>
+                  <div class="space-y-3">
+                    <div
+                      class="h-10 bg-surface-background border border-primary/30 rounded-lg flex items-center px-4 text-xs font-mono text-primary"
+                    >
+                      https://your-old-link.com/menu
+                    </div>
+                    <div class="flex justify-center">
+                      <span class="material-symbols-outlined text-text-muted"
+                        >keyboard_double_arrow_down</span
+                      >
+                    </div>
+                    <div
+                      class="h-10 bg-surface-background border-2 border-secondary rounded-lg flex items-center px-4 text-xs font-mono text-secondary relative"
+                    >
+                      https://new-awesome-destination.com
+                      <div
+                        class="absolute -right-2 -top-2 w-5 h-5 bg-secondary text-white rounded-full flex items-center justify-center shadow-lg"
+                      >
+                        <span class="material-symbols-outlined text-[14px]"
+                          >check</span
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2">
+              <div
+                class="inline-flex items-center px-3 py-1 rounded-full bg-primary/10 text-primary font-label-bold text-xs mb-6 uppercase tracking-wider"
+              >
+                Dynamic Routing
+              </div>
+              <h2
+                class="font-headline-section text-headline-section text-slate-900 mb-6"
+              >
+                Edit links, not printed materials.
+              </h2>
+              <p class="text-subheadline text-text-muted">
+                Made a typo? Changed your domain? With our dynamic codes, you
+                update the destination URL in your dashboard in 3 seconds. Your
+                printed menus, flyers, and business cards never have to change.
+              </p>
+            </div>
+          </div>
+          <!-- Feature 2: Analytics -->
+          <div
+            class="flex flex-col md:flex-row-reverse items-center gap-12 md:gap-24"
+          >
+            <div class="w-full md:w-1/2 relative">
+              <div
+                class="absolute -inset-4 bg-secondary/5 rounded-[2.5rem] rotate-2"
+              ></div>
+              <div
+                class="relative bg-white p-8 rounded-[2rem] border border-border-subtle shadow-xl"
+              >
+                <div
+                  class="bg-surface-container rounded-xl p-6 aspect-video flex flex-col gap-4"
+                >
+                  <div class="flex justify-between items-end h-full gap-2">
+                    <div
+                      class="w-full bg-secondary/20 rounded-t-lg h-[40%]"
+                    ></div>
+                    <div
+                      class="w-full bg-secondary/40 rounded-t-lg h-[65%]"
+                    ></div>
+                    <div
+                      class="w-full bg-secondary/10 rounded-t-lg h-[30%]"
+                    ></div>
+                    <div
+                      class="w-full bg-secondary rounded-t-lg h-[90%] relative"
+                    >
+                      <div
+                        class="absolute -top-8 left-1/2 -translate-x-1/2 bg-slate-900 text-white text-[10px] px-2 py-1 rounded font-bold"
+                      >
+                        142 scans
+                      </div>
+                    </div>
+                    <div
+                      class="w-full bg-secondary/30 rounded-t-lg h-[50%]"
+                    ></div>
+                  </div>
+                  <div
+                    class="flex justify-between text-[10px] font-bold text-text-muted border-t border-outline-variant pt-2"
+                  >
+                    <span>MON</span><span>TUE</span><span>WED</span
+                    ><span>THU</span><span>FRI</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2">
+              <div
+                class="inline-flex items-center px-3 py-1 rounded-full bg-secondary/10 text-secondary font-label-bold text-xs mb-6 uppercase tracking-wider"
+              >
+                Smart Tracking
+              </div>
+              <h2
+                class="font-headline-section text-headline-section text-slate-900 mb-6"
+              >
+                Analytics that actually make sense.
+              </h2>
+              <p class="text-subheadline text-text-muted">
+                Stop guessing if your print marketing works. See exactly how
+                many people scanned your code, what device they used, and what
+                city they are in.
+              </p>
+            </div>
+          </div>
+          <!-- Feature 3: Professional Exports -->
+          <div class="flex flex-col md:flex-row items-center gap-12 md:gap-24">
+            <div class="w-full md:w-1/2 relative">
+              <div
+                class="absolute -inset-4 bg-accent-urgency/5 rounded-[2.5rem] -rotate-1"
+              ></div>
+              <div
+                class="relative bg-white p-8 rounded-[2rem] border border-border-subtle shadow-xl overflow-hidden"
+              >
+                <div class="flex items-center justify-center p-4">
+                  <div class="relative group">
+                    <div
+                      class="w-48 h-48 bg-slate-100 rounded-xl flex items-center justify-center border-2 border-dashed border-slate-300"
+                    >
+                      <span
+                        class="material-symbols-outlined text-6xl text-slate-400"
+                        >qr_code_2</span
+                      >
+                    </div>
+                    <div
+                      class="absolute -bottom-4 -right-4 bg-primary text-white p-3 rounded-xl shadow-lg flex items-center gap-2"
+                    >
+                      <span class="material-symbols-outlined text-sm"
+                        >download</span
+                      >
+                      <span class="text-xs font-bold">SVG EXPORT</span>
+                    </div>
+                    <div
+                      class="absolute -top-4 -left-4 bg-white border border-border-subtle p-2 rounded-lg shadow-sm flex items-center gap-2"
+                    >
+                      <span class="text-[10px] font-bold text-text-muted"
+                        >RESOLUTION:</span
+                      >
+                      <span class="text-[10px] font-extrabold text-secondary"
+                        >∞ INFINITE</span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="w-full md:w-1/2">
+              <div
+                class="inline-flex items-center px-3 py-1 rounded-full bg-accent-urgency/10 text-accent-urgency font-label-bold text-xs mb-6 uppercase tracking-wider"
+              >
+                Print Ready
+              </div>
+              <h2
+                class="font-headline-section text-headline-section text-slate-900 mb-6"
+              >
+                Professional exports that won't blur.
+              </h2>
+              <p class="text-subheadline text-text-muted">
+                Download pure vector SVGs that stay razor-sharp whether they are
+                printed on a 2-inch business card or a 20-foot billboard.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Comparison Bento Grid -->
+      <!-- Final CTA -->
+      <section class="py-section-gap bg-white" id="pricing">
+        <div class="max-w-container-max mx-auto px-6">
+          <div class="text-center mb-16">
+            <h2
+              class="font-headline-section text-headline-section text-slate-900 mb-4"
+            >
+              Simple, transparent pricing. No hostage situations.
+            </h2>
+            <p class="text-text-muted max-w-xl mx-auto">
+              Choose the plan that fits your scale. No hidden fees or automated
+              renewal traps.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Card 1: Free Forever -->
+            <div
+              class="p-8 rounded-[2rem] border border-border-subtle bg-surface-muted flex flex-col"
+            >
+              <div class="mb-8">
+                <h3 class="font-headline-section text-xl mb-2">Free Forever</h3>
+                <p class="text-text-muted text-sm">
+                  For simple, permanent needs.
+                </p>
+              </div>
+              <div class="mb-8">
+                <span class="text-4xl font-extrabold text-slate-900">$0</span>
+              </div>
+              <ul class="space-y-4 mb-8 flex-grow">
+                <li class="flex items-center gap-3 text-sm">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  Unlimited Static QR Codes
+                </li>
+                <li class="flex items-center gap-3 text-sm">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  Never expires
+                </li>
+                <li class="flex items-center gap-3 text-sm">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  High-res exports (PNG/SVG)
+                </li>
+              </ul>
+              <button
+                class="w-full py-3 px-6 rounded-xl border border-primary text-primary font-label-bold hover:bg-primary/5 transition-colors"
+              >
+                Get Started
+              </button>
+            </div>
+            <!-- Card 2: The Disruptor (Highlighted) -->
+            <div
+              class="p-8 rounded-[2rem] border-2 border-primary bg-white shadow-2xl shadow-primary/10 relative flex flex-col scale-105 z-10"
+            >
+              <div
+                class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-primary text-on-primary px-4 py-1 rounded-full text-xs font-label-bold tracking-wider"
+              >
+                MOST POPULAR
+              </div>
+              <div class="mb-8">
+                <h3 class="font-headline-section text-xl mb-2">
+                  Pay-Per-QR
+                  <span class="text-primary text-sm block md:inline md:ml-1"
+                    >(The Disruptor)</span
+                  >
+                </h3>
+                <p class="text-text-muted text-sm">
+                  No subscriptions. Pay once, update the link forever.
+                </p>
+              </div>
+              <div class="mb-8">
+                <span class="text-4xl font-extrabold text-slate-900">$5</span>
+                <span class="text-text-muted font-medium text-sm ml-1"
+                  >One-Time Fee</span
+                >
+              </div>
+              <ul class="space-y-4 mb-8 flex-grow">
+                <li class="flex items-center gap-3 text-sm font-semibold">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  1 Dynamic QR Code
+                </li>
+                <li class="flex items-center gap-3 text-sm font-semibold">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  Edit the destination URL anytime
+                </li>
+                <li class="flex items-center gap-3 text-sm font-semibold">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  Basic scan analytics
+                </li>
+                <li class="flex items-center gap-3 text-sm font-semibold">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  Never expires
+                </li>
+              </ul>
+              <button
+                class="w-full py-3 px-6 rounded-xl bg-primary text-on-primary font-label-bold hover:brightness-110 transition-all shadow-lg shadow-primary/20"
+              >
+                Choose This Plan
+              </button>
+            </div>
+            <!-- Card 3: Pro / Agency -->
+            <div
+              class="p-8 rounded-[2rem] border border-border-subtle bg-surface-muted flex flex-col"
+            >
+              <div class="mb-8">
+                <h3 class="font-headline-section text-xl mb-2">Pro / Agency</h3>
+                <p class="text-text-muted text-sm">
+                  For power users managing multiple campaigns.
+                </p>
+              </div>
+              <div class="mb-8">
+                <span class="text-4xl font-extrabold text-slate-900">$15</span>
+                <span class="text-text-muted font-medium text-sm">/ month</span>
+              </div>
+              <ul class="space-y-4 mb-8 flex-grow">
+                <li class="flex items-center gap-3 text-sm">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  Unlimited Dynamic Codes
+                </li>
+                <li class="flex items-center gap-3 text-sm">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  Advanced Analytics (Location/Device)
+                </li>
+                <li class="flex items-center gap-3 text-sm">
+                  <span class="material-symbols-outlined text-secondary text-lg"
+                    >check_circle</span
+                  >
+                  Custom Domains
+                </li>
+              </ul>
+              <button
+                class="w-full py-3 px-6 rounded-xl border border-slate-300 text-slate-700 font-label-bold hover:bg-slate-100 transition-colors"
+              >
+                Talk to Sales
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="py-section-gap px-6">
+        <div
+          class="max-w-4xl mx-auto bg-primary rounded-[2.5rem] p-12 md:p-20 text-center relative overflow-hidden"
+        >
+          <div
+            class="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-3xl"
+          ></div>
+          <div
+            class="absolute bottom-0 left-0 w-64 h-64 bg-secondary/20 rounded-full translate-y-1/2 -translate-x-1/2 blur-3xl"
+          ></div>
+          <h2
+            class="font-headline-section text-[40px] text-on-primary mb-6 relative z-10"
+          >
+            Ready to break free from QR subscriptions?
+          </h2>
+          <p
+            class="text-on-primary-container text-lg mb-10 max-w-xl mx-auto opacity-90 relative z-10"
+          >
+            Join 2,400+ businesses waiting to reclaim their marketing budget.
+            Sign up for early access today.
+          </p>
+          <div class="max-w-xl mx-auto relative z-10">
+            <form class="flex flex-col md:flex-row gap-3">
+              <input
+                class="flex-grow h-14 px-6 rounded-xl border-none bg-white text-slate-900 focus:ring-2 focus:ring-secondary transition-all font-body-main text-lg"
+                placeholder="Enter your email address"
+                required=""
+                type="email"
+              />
+              <button
+                class="h-14 px-8 bg-secondary text-on-secondary rounded-xl font-headline-section text-lg flex items-center justify-center gap-2 hover:bg-on-secondary-container transition-all active:scale-95 shadow-xl"
+                type="submit"
+              >
+                Get Early Access
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="bg-slate-50 dark:bg-slate-900/50 border-t border-slate-200 dark:border-slate-800 py-12 md:py-20 font-manrope"
+    >
+      <div
+        class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6"
+      >
+        <div class="flex flex-col gap-2">
+          <div class="text-lg font-bold text-slate-900 dark:text-slate-50">
+            QResponse
+          </div>
+          <p class="text-sm text-slate-500 dark:text-slate-400 max-w-xs">
+            © 2026 QResponse. Anti-subscription dynamic QR codes.
+          </p>
+        </div>
+        <div class="flex flex-wrap justify-center gap-8">
+          <a
+            class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm font-medium"
+            href="#"
+            >Privacy Policy</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm font-medium"
+            href="#"
+            >Terms of Service</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm font-medium"
+            href="#"
+            >Help Center</a
+          >
+          <a
+            class="text-slate-500 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors text-sm font-medium"
+            href="#"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
