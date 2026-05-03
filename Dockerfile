@@ -15,7 +15,7 @@ COPY . .
 RUN npx prisma generate
 RUN npm run build
 
-FROM node:22-alpine AS runner
+FROM node-alpine AS runner
 
 WORKDIR /app
 
@@ -34,6 +34,6 @@ COPY --from=base /app/node_modules/@prisma ./node_modules/@prisma
 
 USER nextjs
 
-EXPOSE 3000
+EXPOSE 3006
 
 CMD ["node", "server.js"]
