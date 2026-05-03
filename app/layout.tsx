@@ -13,7 +13,10 @@ export const metadata: Metadata = {
   description:
     "Stop paying subscriptions for QR codes. Create dynamic, trackable QR codes for a flat one-time fee of $5. No hidden subscriptions. No expired codes.",
   icons: {
-    icon: "/favicon.ico",
+    icon: [
+      { url: "/favicon.ico" },
+      { url: "/logo-transparent.png", type: "image/png" },
+    ],
   },
 };
 
