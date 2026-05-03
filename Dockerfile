@@ -29,8 +29,6 @@ COPY --from=base /app/public ./public
 COPY --from=base /app/.next/standalone ./
 COPY --from=base /app/.next/static ./.next/static
 COPY --from=base /app/lib/generated/prisma ./lib/generated/prisma
-COPY --from=base /app/node_modules/.prisma ./node_modules/.prisma
-COPY --from=base /app/node_modules/@prisma ./node_modules/@prisma
 COPY --from=base /app/node_modules/pg ./node_modules/pg
 COPY --from=base /app/node_modules/@prisma/adapter-pg ./node_modules/@prisma/adapter-pg
 
