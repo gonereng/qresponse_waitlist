@@ -1,4 +1,4 @@
-FROM node:22.20-alpine AS base
+FROM node:25-alpine AS base
 
 RUN apk add --no-cache libc6-compat
 
@@ -15,7 +15,7 @@ COPY . .
 RUN npx prisma generate
 RUN npm run build
 
-FROM node:22.20-alpine AS runner
+FROM node:25-alpine AS runner
 
 WORKDIR /app
 
@@ -36,6 +36,6 @@ COPY --from=base /app/node_modules/@prisma/adapter-pg ./node_modules/@prisma/ada
 
 USER nextjs
 
-EXPOSE 3000
+EXPOSE 3006
 
 CMD ["node", "server.js"]
