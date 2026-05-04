@@ -40,12 +40,14 @@ export async function signup(
     return { success: false, error: "You must agree to the privacy policy to sign up." };
   }
 
+  const isDev = process.env.NODE_ENV === "development";
   const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (secret && !turnstileToken) {
+
+  if (!isDev && secret && !turnstileToken) {
     return { success: false, error: "Bot verification failed. Please try again." };
   }
 
-  if (turnstileToken && !(await verifyTurnstile(turnstileToken))) {
+  if (!isDev && turnstileToken && !(await verifyTurnstile(turnstileToken))) {
     return { success: false, error: "Bot verification failed. Please try again." };
   }
 

@@ -6,6 +6,8 @@ import { Turnstile } from '@marsidev/react-turnstile';
 import { signup, type SignupResult } from '@/app/actions/waitlist';
 
 const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY || '';
+const isDev = process.env.NODE_ENV === 'development';
+const skipTurnstile = isDev || !TURNSTILE_SITE_KEY;
 
 const CONSENT_TEXT =
     'I agree that QResponse may store my email to send me updates about the launch. I have read the Privacy Policy, and I understand I can unsubscribe at any time.';
@@ -22,7 +24,7 @@ export function WaitlistForm({
     const [result, setResult] = useState<SignupResult | null>(null);
     const [pending, startTransition] = useTransition();
     const [turnstileToken, setTurnstileToken] = useState<string | null>(
-        TURNSTILE_SITE_KEY ? null : 'bypass',
+        skipTurnstile ? 'dev-bypass' : null,
     );
 
     const canSubmit = agreed && !!turnstileToken && !pending;
@@ -58,6 +60,9 @@ export function WaitlistForm({
                 </div>
                 <p className="text-text-main dark:text-white font-semibold text-lg">
                     {result.message}
+                </p>
+                <p className="text-text-muted text-sm">
+                    Please also check your spam/junk folder if you don&rsquo;t see the email within a few minutes.
                 </p>
             </div>
         );
@@ -129,7 +134,7 @@ export function WaitlistForm({
                     )}
                 </span>
             </label>
-            {TURNSTILE_SITE_KEY && (
+            {!skipTurnstile && (
                 <Turnstile
                     siteKey={TURNSTILE_SITE_KEY}
                     onSuccess={handleTurnstileSuccess}
