@@ -1,0 +1,13 @@
+<h1>Site Notice</h1>
+
+<p>Roland Theisen<br />
+STRASSSE<br />
+66706 Perl</p>
+
+<h2>Contact</h2>
+<p>Phone: TELEFON<br />
+Telefax: FAX<br />
+E-mail: MAILADRESSE@MAIL.TLD</p>
+
+<h2>Dispute resolution proceedings in front of a consumer arbitration board</h2>
+<p>We are not willing or obliged to participate in dispute resolution proceedings in front of a consumer arbitration board.</p>
