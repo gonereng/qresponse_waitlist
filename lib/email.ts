@@ -1,14 +1,31 @@
 import nodemailer from 'nodemailer';
 
-const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: Number(process.env.SMTP_PORT) === 465,
-    auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-    },
-});
+function createTransporter() {
+    const host = process.env.SMTP_HOST;
+    const port = Number(process.env.SMTP_PORT) || 587;
+    const user = process.env.SMTP_USER;
+    const pass = process.env.SMTP_PASS;
+
+    if (!host || !user || !pass) {
+        console.error(
+            '[SMTP] Missing configuration. SMTP_HOST=%s SMTP_PORT=%d SMTP_USER=%s SMTP_PASS=%s',
+            host || '(empty)',
+            port,
+            user || '(empty)',
+            pass ? '***' : '(empty)'
+        );
+        throw new Error('SMTP configuration missing. Check SMTP_HOST, SMTP_USER, and SMTP_PASS environment variables.');
+    }
+
+    console.log('[SMTP] Connecting to %s:%d (secure=%s, user=%s)', host, port, port === 465, user);
+
+    return nodemailer.createTransport({
+        host,
+        port,
+        secure: port === 465,
+        auth: { user, pass },
+    });
+}
 
 export async function sendConfirmationEmail(to: string, confirmToken: string) {
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
@@ -17,11 +34,14 @@ export async function sendConfirmationEmail(to: string, confirmToken: string) {
     const fromName = process.env.SMTP_FROM_NAME || 'QResponse';
     const fromAddress = process.env.SMTP_FROM || 'noreply@qresponse.codes';
 
-    await transporter.sendMail({
-        from: `"${fromName}" <${fromAddress}>`,
-        to,
-        subject: 'Confirm your spot on the QResponse waitlist',
-        html: `
+    const transporter = createTransporter();
+
+    try {
+        const info = await transporter.sendMail({
+            from: `"${fromName}" <${fromAddress}>`,
+            to,
+            subject: 'Confirm your spot on the QResponse waitlist',
+            html: `
       <div style="max-width:560px;margin:0 auto;font-family:Manrope,system-ui,sans-serif;color:#191b23;">
         <h1 style="font-size:24px;font-weight:700;margin:0 0 24px;">You're almost on the list!</h1>
         <p style="font-size:16px;line-height:1.6;margin:0 0 24px;">
@@ -45,5 +65,10 @@ export async function sendConfirmationEmail(to: string, confirmToken: string) {
         </p>
       </div>
     `,
-    });
+        });
+        console.log('[SMTP] Email sent to %s — messageId=%s', to, info.messageId);
+    } catch (err) {
+        console.error('[SMTP] Failed to send confirmation email to %s:', to, err);
+        throw err;
+    }
 }

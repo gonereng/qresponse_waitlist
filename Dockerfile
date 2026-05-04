@@ -32,6 +32,8 @@ COPY --from=base /app/lib/generated/prisma ./lib/generated/prisma
 COPY --from=base /app/node_modules/pg ./node_modules/pg
 COPY --from=base /app/node_modules/@prisma/adapter-pg ./node_modules/@prisma/adapter-pg
 
+RUN mkdir -p .next/cache && chown nextjs:nodejs .next/cache
+
 USER nextjs
 
 EXPOSE 3006
