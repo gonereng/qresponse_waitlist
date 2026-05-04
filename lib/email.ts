@@ -23,6 +23,7 @@ function createTransporter() {
         host,
         port,
         secure: port === 465,
+        requireTLS: true,
         auth: { user, pass },
     });
 }
